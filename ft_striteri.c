@@ -1,39 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbrouk <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 21:41:53 by mbrouk            #+#    #+#             */
-/*   Updated: 2024/10/24 19:11:47 by mbrouk           ###   ########.fr       */
+/*   Created: 2024/10/27 19:07:40 by mbrouk            #+#    #+#             */
+/*   Updated: 2024/10/27 22:41:04 by mbrouk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(char *str)
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	size_t	len;
-	char	*arr;
-	size_t	i;
+	size_t	y;
 
-	len = ft_strlen(str);
-	i = 0;
-	arr = malloc(sizeof(char) * len);
-	if (!arr)
-		return (NULL);
-	while (str[i])
+	y = 0;
+	while (s[y])
 	{
-		arr[i] = str[i];
-		i++;
+		f(y, &s[y]);
+		y++;
 	}
-	arr[i] = '\0';
-	return (arr);
 }
 /*
-int main()
-{
-	char str[] = "1337mero";
-	printf("%s",ft_strdup(str));
+#include <stdio.h>
+
+#include <ctype.h>
+
+void example_function(unsigned int i, char *c) {
+    if (i && islower(*c))
+        *c = toupper(*c);
+}
+
+int main() {
+    char s[] = "hello world!";
+    printf("Originel: %s\n", s);
+
+    ft_striteri(s, example_function);
+    
+    printf("Modified: %s\n", s);
+
+    return 0;
 }*/

@@ -1,39 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbrouk <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 21:41:53 by mbrouk            #+#    #+#             */
-/*   Updated: 2024/10/24 19:11:47 by mbrouk           ###   ########.fr       */
+/*   Created: 2024/10/26 11:44:15 by mbrouk            #+#    #+#             */
+/*   Updated: 2024/10/26 14:45:00 by mbrouk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <string.h>
 
-char	*ft_strdup(char *str)
+size_t	ft_strlcpy(char *dest, const char *src, size_t destsize)
 {
-	size_t	len;
-	char	*arr;
 	size_t	i;
+	size_t	src_len;
 
-	len = ft_strlen(str);
 	i = 0;
-	arr = malloc(sizeof(char) * len);
-	if (!arr)
-		return (NULL);
-	while (str[i])
+	src_len = 0;
+	while (src[src_len])
+		src_len++;
+	if (destsize == 0)
+		return (src_len);
+	while (src[i] && i < destsize - 1)
 	{
-		arr[i] = str[i];
+		dest[i] = src[i];
 		i++;
 	}
-	arr[i] = '\0';
-	return (arr);
+	dest[i] = '\0';
+	return (src_len);
 }
 /*
 int main()
 {
-	char str[] = "1337mero";
-	printf("%s",ft_strdup(str));
+	char *src = "marouane";
+	char dest[10];
+	size_t n = 5;
+	printf("%zu\n",ft_strlcpy(dest, src, n));
+	printf("%s",dest);
 }*/

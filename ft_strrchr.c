@@ -6,7 +6,7 @@
 /*   By: mbrouk <mbrouk@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 09:40:13 by mbrouk            #+#    #+#             */
-/*   Updated: 2024/10/23 16:28:19 by mbrouk           ###   ########.fr       */
+/*   Updated: 2024/10/24 22:35:25 by mbrouk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ char	*ft_strrchr(char *str, int c)
 /*
 int main()
 {
-	char str[] = "ayman";
+	char str[] = "marouane";
 	int c = 'a';
-	printf("%s",ft_strrchr(str,c));
+	printf("%s\n",ft_strrchr(str,c));
+	printf("%s",strrchr(str,c));
 }*/

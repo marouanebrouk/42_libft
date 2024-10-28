@@ -1,39 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbrouk <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 21:41:53 by mbrouk            #+#    #+#             */
-/*   Updated: 2024/10/24 19:11:47 by mbrouk           ###   ########.fr       */
+/*   Created: 2024/10/28 15:30:03 by mbrouk            #+#    #+#             */
+/*   Updated: 2024/10/28 17:16:15 by mbrouk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(char *str)
+void	ft_putnbr_fd(int n, int fd)
 {
-	size_t	len;
-	char	*arr;
-	size_t	i;
+	char	digit;
 
-	len = ft_strlen(str);
-	i = 0;
-	arr = malloc(sizeof(char) * len);
-	if (!arr)
-		return (NULL);
-	while (str[i])
+	if (n == -2147483648)
+		write(fd, "-2147483648", 11);
+	else if (n < 0)
 	{
-		arr[i] = str[i];
-		i++;
+		write(fd, "-", 1);
+		ft_putnbr_fd(-n, fd);
 	}
-	arr[i] = '\0';
-	return (arr);
+	else if (n > 9)
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(n % 10, fd);
+	}
+	else
+	{
+		digit = n + '0';
+		write(fd, &digit, 1);
+	}
 }
 /*
 int main()
 {
-	char str[] = "1337mero";
-	printf("%s",ft_strdup(str));
+	ft_putnbr_fd(2147483647, 1);
 }*/

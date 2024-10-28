@@ -1,39 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbrouk <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 21:41:53 by mbrouk            #+#    #+#             */
-/*   Updated: 2024/10/24 19:11:47 by mbrouk           ###   ########.fr       */
+/*   Created: 2024/10/28 15:06:00 by mbrouk            #+#    #+#             */
+/*   Updated: 2024/10/28 15:07:33 by mbrouk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(char *str)
+void	ft_putchar_fd(char c, int fd)
 {
-	size_t	len;
-	char	*arr;
-	size_t	i;
-
-	len = ft_strlen(str);
-	i = 0;
-	arr = malloc(sizeof(char) * len);
-	if (!arr)
-		return (NULL);
-	while (str[i])
-	{
-		arr[i] = str[i];
-		i++;
-	}
-	arr[i] = '\0';
-	return (arr);
+	write(fd, &c, 1);
 }
-/*
-int main()
-{
-	char str[] = "1337mero";
-	printf("%s",ft_strdup(str));
-}*/

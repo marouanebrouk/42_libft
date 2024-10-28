@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbrouk <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mbrouk <mbrouk@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 19:30:15 by mbrouk            #+#    #+#             */
-/*   Updated: 2024/10/23 16:58:16 by mbrouk           ###   ########.fr       */
+/*   Updated: 2024/10/28 14:34:06 by mbrouk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	char	*p;
-	size_t	i;
+	unsigned char	*p;
+	size_t			i;
 
 	i = 0;
-	p = (char *)s;
+	p = (unsigned char *)s;
 	while (i < n)
 		p[i++] = '\0';
 }
@@ -26,6 +26,6 @@ void	ft_bzero(void *s, size_t n)
 int main()
 {
 	char str[] = "marouane";
-	ft_bzero(str,1);
+	ft_bzero(str+6,5);
 	printf("%s",str);
 }*/

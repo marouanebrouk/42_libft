@@ -6,7 +6,7 @@
 /*   By: mbrouk <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 21:31:37 by mbrouk            #+#    #+#             */
-/*   Updated: 2024/10/24 11:02:07 by mbrouk           ###   ########.fr       */
+/*   Updated: 2024/10/26 15:17:06 by mbrouk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	unsigned char	*d;
-	unsigned char	*s;
-	size_t		i;
+	char	*d;
+	char	*s;
+	size_t	i;
 
-	d = (unsigned char *)dest;
-	s = (unsigned char *)src;
+	if (!dest && !src)
+		return (NULL);
+	d = (char *)dest;
+	s = (char *)src;
 	i = 0;
 	while (i < n)
 	{
@@ -32,7 +34,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 int main()
 {
 	char src[] = "marouane";
-	char dest[10];
-	ft_memcpy(dest, src, 2);
+	char dest[15];
+	ft_memcpy(dest, src,8);
 	printf("%s",dest);
 }*/

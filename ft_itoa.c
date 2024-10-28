@@ -1,52 +1,67 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbrouk <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/23 14:00:13 by mbrouk            #+#    #+#             */
+/*   Updated: 2024/10/26 11:35:53 by mbrouk           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-#include <stdio.h>
-#include <stdlib.h>
-static int ft_len_int(long nb)
+
+static	int	ft_len_int(int num)
 {
-    int count;
-    
-    count = 0;
-    if(nb <= 0)
-        count++;
-    while(nb != 0)
-    {
-        count++;
-        nb = nb / 10;
-    }
-    return count;
+	int	count;
+
+	count = 0;
+	if (num == 0)
+		count++;
+	if (num < 0)
+	{
+		count++;
+		num = -num;
+	}
+	while (num)
+	{
+		count++;
+		num = num / 10;
+	}
+	return (count);
 }
 
-
-char *ft_itoa(int n)
+char	*ft_itoa(int num)
 {
-    char *s;
-    int i;
-    long num;
-    int len_int;
+	char	*s;
+	size_t	int_len;
+	int		i;
 
-    num = (long)n;
-    len_int = ft_len_int(num);
-    s = malloc(len_int + 1);
-    i = 0;
-    if(!s)
-        return (NULL);
-    if(num < 0)
-    {
-        s[i++] = '-';
-        num = -num;
-    }
-    if(num == 0)
-        s[i++] = '0';
-    s[len_int] = '\0';
-    while(num)
-    {
-        s[--len_int] = num % 10 + '0';
-        num = num / 10;
-    }
-    return s;
+	int_len = ft_len_int(num);
+	s = malloc(int_len + 1);
+	if (!s)
+		return (NULL);
+	i = 0;
+	if (num < 0)
+	{
+		num = -num;
+		s[i++] = '-';
+	}
+	if (num == 0)
+		s[i++] = '0';
+	s[int_len] = '\0';
+	while (num)
+	{
+		s[--int_len] = num % 10 + '0';
+		num = num / 10;
+	}
+	return (s);
 }
-
-// int main()
-// {
-//     printf("%s\n",ft_itoa(12345));
-// }
+/*
+int	main()
+{
+	printf("%s\n",ft_itoa(0));
+	printf("%s\n",ft_itoa(-125));
+	printf("%s\n",ft_itoa(123456789));
+}*/
