@@ -6,7 +6,7 @@
 /*   By: mbrouk <mbrouk@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 19:30:15 by mbrouk            #+#    #+#             */
-/*   Updated: 2024/10/28 14:34:06 by mbrouk           ###   ########.fr       */
+/*   Updated: 2024/11/15 17:40:20 by mbrouk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_bzero(void *s, size_t n)
 /*
 int main()
 {
-	char str[] = "marouane";
-	ft_bzero(str+6,5);
-	printf("%s",str);
+	int  str = 1337;
+	ft_bzero(&str,1);
+	printf("%d",str);
 }*/

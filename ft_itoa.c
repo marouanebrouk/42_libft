@@ -6,62 +6,65 @@
 /*   By: mbrouk <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 14:00:13 by mbrouk            #+#    #+#             */
-/*   Updated: 2024/10/26 11:35:53 by mbrouk           ###   ########.fr       */
+/*   Updated: 2024/11/05 15:58:15 by mbrouk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	int	ft_len_int(int num)
+static	int	ft_len_int(long longnum)
 {
 	int	count;
 
 	count = 0;
-	if (num == 0)
+	if (longnum == 0)
 		count++;
-	if (num < 0)
+	if (longnum < 0)
 	{
 		count++;
-		num = -num;
+		longnum = -longnum;
 	}
-	while (num)
+	while (longnum)
 	{
 		count++;
-		num = num / 10;
+		longnum = longnum / 10;
 	}
 	return (count);
 }
 
 char	*ft_itoa(int num)
 {
-	char	*s;
-	size_t	int_len;
-	int		i;
+	char		*s;
+	size_t		int_len;
+	int			i;
+	long		longnum;
 
-	int_len = ft_len_int(num);
+	longnum = num;
+	int_len = ft_len_int(longnum);
 	s = malloc(int_len + 1);
 	if (!s)
 		return (NULL);
 	i = 0;
-	if (num < 0)
+	if (longnum < 0)
 	{
-		num = -num;
+		longnum = -longnum;
 		s[i++] = '-';
 	}
-	if (num == 0)
+	if (longnum == 0)
 		s[i++] = '0';
 	s[int_len] = '\0';
-	while (num)
+	while (longnum)
 	{
-		s[--int_len] = num % 10 + '0';
-		num = num / 10;
+		s[--int_len] = longnum % 10 + '0';
+		longnum = longnum / 10;
 	}
 	return (s);
 }
 /*
 int	main()
 {
-	printf("%s\n",ft_itoa(0));
+	printf("%s\n",ft_itoa(0123));
 	printf("%s\n",ft_itoa(-125));
-	printf("%s\n",ft_itoa(123456789));
+	printf("%s\n",ft_itoa(2147483647));
+	printf("%s\n",ft_itoa(-2147483648));
 }*/

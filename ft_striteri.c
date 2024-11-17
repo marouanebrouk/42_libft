@@ -6,7 +6,7 @@
 /*   By: mbrouk <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 19:07:40 by mbrouk            #+#    #+#             */
-/*   Updated: 2024/10/27 22:41:04 by mbrouk           ###   ########.fr       */
+/*   Updated: 2024/11/02 22:00:14 by mbrouk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
 	size_t	y;
 
+	if (!s)
+		return ;
 	y = 0;
 	while (s[y])
 	{

@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbrouk <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 21:41:53 by mbrouk            #+#    #+#             */
-/*   Updated: 2024/11/01 17:43:33 by mbrouk           ###   ########.fr       */
+/*   Created: 2024/10/31 21:35:15 by mbrouk            #+#    #+#             */
+/*   Updated: 2024/11/06 18:17:11 by mbrouk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *str)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t	len;
-	char	*arr;
-	size_t	i;
+	unsigned char		*d;
+	const unsigned char	*s;
 
-	len = ft_strlen(str);
-	i = 0;
-	arr = malloc(len + 1);
-	if (!arr)
-		return (NULL);
-	while (str[i])
+	d = dest;
+	s = src;
+	if (d == s)
+		return (dest);
+	if (d < s || d >= s + n)
+		ft_memcpy(d, s, n);
+	else
 	{
-		arr[i] = str[i];
-		i++;
+		while (n--)
+			d[n] = s[n];
 	}
-	arr[i] = '\0';
-	return (arr);
+	return (dest);
 }
 /*
-int main()
+int main ()
 {
-	char str[] = "1337mero";
-	printf("%s",ft_strdup(str));
+	char src[] = "abcdef";
+	ft_memmove(src+2,src,3);
+	printf("%s",src);
 }*/

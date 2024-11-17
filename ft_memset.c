@@ -6,7 +6,7 @@
 /*   By: mbrouk <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 19:19:34 by mbrouk            #+#    #+#             */
-/*   Updated: 2024/10/26 15:30:26 by mbrouk           ###   ########.fr       */
+/*   Updated: 2024/11/09 11:36:20 by mbrouk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	*ft_memset(void *s, int c, size_t n)
 {
-	unsigned int	i;
-	umsigned char	*p;
+	size_t			i;
+	unsigned char	*p;
 
 	i = 0;
-	p = (char *)s;
+	p = (unsigned char *)s;
 	while (i < n)
 	{
 		p[i] = (unsigned char)c;
@@ -26,3 +26,10 @@ void	*ft_memset(void *s, int c, size_t n)
 	}
 	return (s);
 }
+/*
+int main()
+{
+	char a = 'c';
+	ft_memset(&a,300,1);
+	printf("%d",a);
+}*/

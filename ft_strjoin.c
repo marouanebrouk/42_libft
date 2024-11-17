@@ -6,7 +6,7 @@
 /*   By: mbrouk <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 13:22:27 by mbrouk            #+#    #+#             */
-/*   Updated: 2024/10/24 22:08:30 by mbrouk           ###   ########.fr       */
+/*   Updated: 2024/11/02 21:53:58 by mbrouk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	j;
 	size_t	i;
 
+	if (!s1 || !s2)
+		return (NULL);
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
 	new = malloc(len1 + len2 + 1);

@@ -6,7 +6,7 @@
 /*   By: mbrouk <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 14:25:24 by mbrouk            #+#    #+#             */
-/*   Updated: 2024/10/26 11:40:51 by mbrouk           ###   ########.fr       */
+/*   Updated: 2024/11/05 15:13:22 by mbrouk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
-	char	*substr;
-	size_t	slen;
-	size_t	i;
+	char		*substr;
+	size_t		slen;
+	size_t		i;
 
 	i = 0;
 	slen = ft_strlen(s);
 	if (!s)
 		return (NULL);
 	if (start > slen)
-		return ("");
+		return (ft_calloc(1, 1));
 	if (len > slen - start)
 		len = slen - start;
-	substr = malloc(slen - start + 1);
+	substr = malloc(len + 1);
 	if (!substr)
 		return (NULL);
 	while (i < len)
@@ -38,19 +38,16 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	return (substr);
 }
 /*
-int main() {
-    char *str = "marouanebrouk";
-    printf("Original string: %s\n", str);
-    
-    // Normal case
-    printf("Substring: %s\n", ft_substr(str, 8, 5)); // Output: "brouk"
+int main()
+{
+    char *str = "42";
 
-    // Out-of-bounds start index
-    printf("Out-of-bounds start: %s\n", ft_substr(str, 50, 5)); // Output: ""
+//    printf("Original string: %s\n", str);
     
-    // Large len beyond string length
+    printf("Substring: %s\n", ft_substr(str, 0, 0)); // Output: "brouk"
+    printf("large start: %s\n", ft_substr(str, 50, 5)); // Output: ""
+    
     printf("Large len: %s\n", ft_substr(str, 5, 20)); // Output: "anebrouk"
 
-    // Zero length
     printf("Zero len: %s\n", ft_substr(str, 5, 0)); // Output: ""
 }*/

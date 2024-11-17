@@ -1,39 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbrouk <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 21:41:53 by mbrouk            #+#    #+#             */
-/*   Updated: 2024/11/01 17:43:33 by mbrouk           ###   ########.fr       */
+/*   Created: 2024/11/03 15:51:13 by mbrouk            #+#    #+#             */
+/*   Updated: 2024/11/04 15:03:13 by mbrouk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *str)
+t_list	*ft_lstnew(void *content)
 {
-	size_t	len;
-	char	*arr;
-	size_t	i;
+	t_list	*node;
 
-	len = ft_strlen(str);
-	i = 0;
-	arr = malloc(len + 1);
-	if (!arr)
+	node = (t_list *)malloc(sizeof(t_list));
+	if (!node)
 		return (NULL);
-	while (str[i])
-	{
-		arr[i] = str[i];
-		i++;
-	}
-	arr[i] = '\0';
-	return (arr);
+	node -> content = content;
+	node -> next = NULL;
+	return (node);
 }
 /*
 int main()
 {
-	char str[] = "1337mero";
-	printf("%s",ft_strdup(str));
+	//char *value;
+	//value = "marouane";
+	//t_list *node;
+	//node = ft_lstnew(value);
+	//printf("%s",(char *)(node -> content));
+	//printf("%lu",sizeof(t_list));
 }*/

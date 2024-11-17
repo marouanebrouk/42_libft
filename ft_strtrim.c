@@ -6,39 +6,25 @@
 /*   By: mbrouk <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 12:22:31 by mbrouk            #+#    #+#             */
-/*   Updated: 2024/10/27 18:14:00 by mbrouk           ###   ########.fr       */
+/*   Updated: 2024/11/02 21:57:09 by mbrouk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	is_in_set(char c, const char *set)
-{
-	int	i;
-
-	i = 0;
-	while (set[i])
-	{
-		if (c == set[i])
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*trimmed;
-	int		i;
 	int		start;
 	int		end;
 
+	if (!s1)
+		return (NULL);
 	start = 0;
 	end = ft_strlen(s1) - 1;
-	i = 0;
-	while (s1[start] && is_in_set(s1[start], set))
+	while (s1[start] && ft_strchr(set, s1[start]))
 		start++;
-	while (end > start && is_in_set(s1[end], set))
+	while (end > start && ft_strchr(set, s1[end]))
 		end--;
 	trimmed = ft_substr(s1, start, end - start + 1);
 	return (trimmed);
@@ -46,7 +32,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 /*
 int main()
 {
-	char *str = "vvc brouk vc";
-	char *set = "vc ";
+	char *str = "9891";
+	char *set = "19";
 	printf("%s",ft_strtrim(str,set));
 }*/
